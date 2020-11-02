@@ -4,13 +4,14 @@ variables:
   APP_NAME: team-gitlab-hackathon/frontend
   DOCKER_HOST: tcp://docker:2375
 
-build_artifacts:
+test:
   image: node:10.23-alpine
-  stage: build
+  stage: test
   before_script:
     - cd ./client
   script:
     - npm install
+    - npm run test
 
 publish:
   stage: deploy
