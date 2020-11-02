@@ -7,10 +7,13 @@ variables:
 build_artifacts:
   image: node:10.23-alpine
   stage: build
+  before_script:
+    - cd ./client
   script:
     - npm install
 
 publish:
+  stage: publish
   image:
     name: amazon/aws-cli
     entrypoint: [""]
