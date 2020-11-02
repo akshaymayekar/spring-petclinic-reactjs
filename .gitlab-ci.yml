@@ -13,7 +13,7 @@ build_artifacts:
     - npm install
 
 publish:
-  stage: publish
+  stage: deploy
   image:
     name: amazon/aws-cli
     entrypoint: [""]
