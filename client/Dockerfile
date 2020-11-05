@@ -6,6 +6,8 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
 COPY . ./
+ARG API_SERVER_URL_ARG
+ENV API_SERVER_URL=$API_SERVER_URL_ARG
 RUN npm run build:prod
 
 # production environment

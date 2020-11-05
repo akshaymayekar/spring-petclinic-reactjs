@@ -25,6 +25,6 @@ publish:
     - aws --version
     - docker --version
   script:
-    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID -f client/Dockerfile ./client
+    - docker build -t $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID --build-arg API_SERVER_URL_ARG=$API_SERVER_URL -f client/Dockerfile ./client
     - aws ecr get-login-password | docker login --username AWS --password-stdin $DOCKER_REGISTRY
     - docker push $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID
