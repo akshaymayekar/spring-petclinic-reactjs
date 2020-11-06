@@ -28,3 +28,10 @@ publish:
     - docker build -t $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID --build-arg API_SERVER_URL_ARG=$API_SERVER_URL -f client/Dockerfile ./client
     - aws ecr get-login-password | docker login --username AWS --password-stdin $DOCKER_REGISTRY
     - docker push $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID
+
+staging:
+  variables:
+    ENVIRONMENT: staging
+    DOCKER_IMAGE: $CI_PIPELINE_IID
+  stage: deploy
+  trigger: shreyasm/spring-petclinic-frontend-repo
