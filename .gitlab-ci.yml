@@ -6,7 +6,7 @@ variables:
 
 test:
   image: node:10.23-alpine
-  stage: test
+  stage: build
   before_script:
     - cd ./client
   script:
